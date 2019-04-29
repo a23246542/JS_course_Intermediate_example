@@ -90,6 +90,9 @@
         }
  
         Object.defineProperty(seachObj, 'item', {
+            get: function(){
+                return item;
+            },
             set: function(value) {
                 DOMrender(value);
             }

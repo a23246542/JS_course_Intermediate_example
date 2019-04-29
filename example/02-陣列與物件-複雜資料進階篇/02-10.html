@@ -19,7 +19,11 @@
 
         function BindValue(obj, value, callback){
             Object.defineProperty(obj, value, {
-                set: function(value) {
+                get: function(){
+                    return value;
+                },
+                set: function(val) {
+                    value = val;
                     callback(value);
                 }
             })
@@ -38,19 +42,19 @@
         BindValue(data, 'money', handMoney);
         
         function handTitle(val){
-            console.log(val);
+            console.log(data);
         }
 
         function handLink(val){
-            console.log(val);
+            console.log(data);
         }
 
         function handText(val){
-            console.log(val);
+            console.log(data);
         }
 
         function handMoney(val){
-            console.log(val);
+            console.log(data);
         }
 
 
