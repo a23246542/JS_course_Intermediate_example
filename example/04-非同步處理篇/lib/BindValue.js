@@ -9,5 +9,4 @@ function BindValue(obj, key, callback){
             callback(val);
         }
     });
-    obj[key] = val;
 }
