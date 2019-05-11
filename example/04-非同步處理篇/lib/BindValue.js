@@ -1,11 +1,13 @@
-function BindValue(obj, value, callback){    
-    Object.defineProperty(obj, value, {
-        get: function() {
-            return value;
+function BindValue(obj, key, callback){
+    var val = obj[key];
+    Object.defineProperty(obj, key,{
+        get:function(){
+            return val;
         },
-        set: function(val) {
-            value = val;
+        set:function(value){
+            val = value;
             callback(val);
         }
-    })
+    });
+    obj[key] = val;
 }

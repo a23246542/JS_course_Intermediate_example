@@ -19,6 +19,7 @@
     </div>
     <footer></footer>
     <script>
+        var html = "";
         var title = [
             "會計年度最後一個月 美國防部狂花1.4億買蝦蟹...",
             "大逆轉！情侶照1.5萬變16萬 當事人道歉了...",
@@ -40,6 +41,10 @@
             "https://news.ebc.net.tw/News/Article/155497",
         ];
         
+        for(var i = 0; i < title.length; i++){
+            html+= '<li><a href="'+url[i]+'" target="_blank">'+title[i]+'</a></li>'
+        }
+        document.getElementById("list").innerHTML = html;
 
     </script>
 </body>
