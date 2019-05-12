@@ -69,59 +69,60 @@
         var newData = data;
 
         //畫面渲染
-        function DOMrender(){
-            html = "";
+        function DOMReader(arr){
+            html = '';
             itemList.innerHTML = '';
-            newData.forEach(function(item){
+            arr.forEach(function(obj){
                 html += '<ul class="tit2">'
-                html += '<li>'+item.name+'</li>'
-                html += '<li>'+item.money+'</li>'
-                html += '<li>'+item.age+'</li>'
-                html += '<li>'+item.sex+'</li>'
+                html += '<li>'+obj.name+'</li>'
+                html += '<li>'+obj.money+'</li>'
+                html += '<li>'+obj.age+'</li>'
+                html += '<li>'+obj.sex+'</li>'
                 html += '</ul>'
-            });
+            })
             itemList.innerHTML = html;
         }
 
+        DOMReader(newData);
+        
         // 選擇錢的處理
-        function SeachDataMoney(value){
-            var num = Number(value)
-            newData = [];
+        function userMoney(value){
+            var m = Number(value);
+            var arr = [];
             
-            //  filter
+            // filter
 
-
-            DOMrender();
+            DOMReader(arr);
         }
 
         // 選擇年齡的處理
-        function SeachDataAge(value){
-            var num = Number(value)
-            newData = [];
-            
-            //  filter
+        function userAge(value){
+            var m = Number(value);
+            var arr = [];
 
-            DOMrender();
+            // filter
+
+            DOMReader(arr);
         }
 
         // 選擇性別的處理
-        function SeachDataSex(value){
-            newData = [];
+        function userSex(value){
+            var arr = [];
+
+            // filter
             
-            //  filter
-            
-            DOMrender();
+            DOMReader(arr);
         }
 
-        user_money.addEventListener("change", function(){
-            SeachDataMoney(this.value);
-        })
-        user_age.addEventListener("change", function(){
-            SeachDataAge(this.value);
-        })
-        user_sex.addEventListener("change", function(){
-            SeachDataSex(this.value);
-        })
+        user_money.addEventListener('change', function(){
+            userMoney(this.value);
+        });
+        user_age.addEventListener('change', function(){
+            userAge(this.value);
+        });
+        user_sex.addEventListener('change', function(){
+            userSex(this.value)
+        });
 
         DOMrender();
 

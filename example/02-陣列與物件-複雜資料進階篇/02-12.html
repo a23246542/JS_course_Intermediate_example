@@ -69,10 +69,10 @@
         var newData = data;
 
         //畫面渲染
-        function DOMrender(){
+        function DOMrender(arr){
             html = "";
             itemList.innerHTML = '';
-            newData.forEach(function(item){
+            arr.forEach(function(item){
                 html += '<ul class="tit2">'
                 html += '<li>'+item.name+'</li>'
                 html += '<li>'+item.money+'</li>'
@@ -86,33 +86,30 @@
         // 選擇錢的處理
         function SeachDataMoney(value){
             var num = Number(value)
-            newData = [];
-            newData = data.filter(function(item){
-                return item.money > num
-            });
-            DOMrender();
+            var arr = newData.filter(function(obj){
+                return obj.money > num
+            })
+            DOMrender(arr);
         }
 
         // 選擇年齡的處理
         function SeachDataAge(value){
             var num = Number(value)
-            newData = [];
-            newData = data.filter(function(item){
-                return item.age > num;
-            });
-            DOMrender();
+            var arr = newData.filter(function(obj){
+                return obj.age > num
+            })
+            DOMrender(arr);
         }
 
         // 選擇性別的處理
         function SeachDataSex(value){
-            newData = [];
-            newData = data.filter(function(item){
-                if(value === "no"){
-                    return item;
+            var arr = newData.filter(function(obj){
+                if(value === 'no'){
+                    return obj;
                 }
-                return item.sex === value
-            });
-            DOMrender();
+                return obj.sex === value;
+            })
+            DOMrender(arr);
         }
 
         user_money.addEventListener("change", function(){
@@ -125,7 +122,7 @@
             SeachDataSex(this.value);
         })
 
-        DOMrender();
+        DOMrender(newData);
 
 
     

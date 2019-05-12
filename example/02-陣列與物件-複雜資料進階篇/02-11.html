@@ -78,75 +78,69 @@
         // }
 
         //畫面渲染
-        function DOMrender(){
-            html = "";
+        function DOMReader(arr){
+            html = '';
             itemList.innerHTML = '';
-            newData.forEach(function(item){
+            arr.forEach(function(obj){
                 html += '<ul class="tit2">'
-                html += '<li>'+item.name+'</li>'
-                html += '<li>'+item.money+'</li>'
-                html += '<li>'+item.age+'</li>'
-                html += '<li>'+item.sex+'</li>'
+                html += '<li>'+obj.name+'</li>'
+                html += '<li>'+obj.money+'</li>'
+                html += '<li>'+obj.age+'</li>'
+                html += '<li>'+obj.sex+'</li>'
                 html += '</ul>'
-            });
+            })
             itemList.innerHTML = html;
         }
 
         // 選擇錢的處理
-        function SeachDataMoney(value){
-            var num = Number(value)
+        function userMoney(value){
+            var m = Number(value);
             var arr = [];
-            data.forEach(function(item){
-                if(item.money > num){
-                    arr.push(item);
+            newData.forEach(function(obj){
+                if(obj.money > m){
+                    arr.push(obj);
                 }
-            });
-            newData = [];
-            newData = arr;
-            DOMrender();
+            })
+            DOMReader(arr);
         }
 
         // 選擇年齡的處理
-        function SeachDataAge(value){
-            var num = Number(value)
+        function userAge(value){
+            var m = Number(value);
             var arr = [];
-            data.forEach(function(item){
-                if(item.age > num){
-                    arr.push(item);
+            newData.forEach(function(obj){
+                if(obj.age > m){
+                    arr.push(obj);
                 }
-            });
-            newData = [];
-            newData = arr;
-            DOMrender();
+            })
+            DOMReader(arr);
         }
 
         // 選擇性別的處理
-        function SeachDataSex(value){
+        function userSex(value){
             var arr = [];
-            data.forEach(function(item){
-                if(item.sex === value){
-                    arr.push(item);
+            newData.forEach(function(obj){
+                if(obj.sex === value){
+                    arr.push(obj);
                 }
-                if(value === "no"){
-                    arr.push(item);
+                if(value === 'no'){
+                    arr.push(obj);
                 }
-            });
-            newData = [];
-            newData = arr;
-            DOMrender();
+            })
+            DOMReader(arr);
         }
 
-        user_money.addEventListener("change", function(){
-            SeachDataMoney(this.value);
-        })
-        user_age.addEventListener("change", function(){
-            SeachDataAge(this.value);
-        })
-        user_sex.addEventListener("change", function(){
-            SeachDataSex(this.value);
-        })
-
-        DOMrender();
+        user_money.addEventListener('change', function(){
+            userMoney(this.value);
+        });
+        user_age.addEventListener('change', function(){
+            userAge(this.value);
+        });
+        user_sex.addEventListener('change', function(){
+            userSex(this.value)
+        });
+        
+        DOMReader(newData);
 
 
     
