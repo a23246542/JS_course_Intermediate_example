@@ -67,7 +67,7 @@
             })
 
             moreBtn.addEventListener("click", function(){
-                SearchHashTag(seachBar.value);
+                SearchHashTag(keyword);
             })
 
             function SearchHashTag(keyword){
@@ -83,10 +83,8 @@
                 axios.get(baseUrl).then(function(res) {
                     pageInfo = res.data.graphql.hashtag.edge_hashtag_to_media['page_info'];                    
                     edges = res.data.graphql.hashtag.edge_hashtag_to_media['edges'];
-                    edges.forEach(function(obj) {
-                        arr.push(obj);
-                    });
-                    photoTag.pages = arr;
+
+                    photoTag.pages = edges;
                     Loading.isOpem = false;
                 })
                 .catch(function(err) {
@@ -122,10 +120,6 @@
                     })
                 }
 
-                popPage.addEventListener("click", function(){
-                    this.style.display = "none";
-                });
-
                 if(val.length!==0){
                     document.getElementById("bar").classList.add('seachOk');
                     document.getElementById("more").style.display = 'block';
@@ -147,6 +141,9 @@
                 }
             })
 
+            popPage.addEventListener("click", function(){
+                this.style.display = "none";
+            });
 
         }
     </script>
